@@ -4,6 +4,7 @@ import Main from '../components/templates/Main';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
 import PerfilImagem from '../api/perfilImagens';
+//ALTERAR TUDO QUE TEM CURSO  e ALUNO
 
 const urlAPI = "http://localhost:5092/api/aluno";
 const initialState = {
