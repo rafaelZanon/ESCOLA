@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './CrudCurso.css';
 import Main from '../components/templates/Main';
 import axios from 'axios';
-const title = "Consulta e Cadastro de Cursos";
+const title = "Consulta e Cadastro de Produto";
+//ALTERAR TUDO QUE TEM CURSO 
 
 const urlAPI = "http://localhost:5092/api/curso";
 const initialState = {
@@ -52,37 +53,37 @@ export default class CrudCurso extends Component {
     renderForm() {
         return (
             <div className="inclui-container">
-            <label> Codigo do Curso: </label>
+            <label> Código do Produto: </label>
             <input
                 type="number"
-                id="codCurso"
-                placeholder="Código do Curso"
+                id="codProd"
+                placeholder="Código do Produto"
                 className="form-input"
-                name="codCurso"
-
+                name="codProd"
+                //alterar depois que tem curso
                 value={this.state.curso.codCurso}
                 onChange={e => this.atualizaCampo(e)}
             />
-            <label> Nome do Curso: </label>
+            <label> Nome do Produto: </label>
             <input
                 type="text"
-                id="nomeCurso"
-                placeholder="Nome do Curso"
+                id="nomeProduto"
+                placeholder="Nome do Produto"
                 className="form-input"
-                name="nomeCurso"
-
+                name="nomeProduto"
+                //alterar depois que tem curso
                 value={this.state.curso.nomeCurso}
                 onChange={e => this.atualizaCampo(e)}
             />
             
-             <label> Periodo do Curso: </label>
+             <label> Data do Pedido: </label>
             <input
-                type="text"
-                id="periodo"
-                placeholder="N, V, M"
+                type="date"
+                id="data"
+                placeholder="**/**/****"
                 className="form-input"
-                name="periodo"
-
+                name="data"
+                //alterar depois que tem curso
                 value={this.state.curso.periodo}
                 onChange={e => this.atualizaCampo(e)}
             />
@@ -115,16 +116,16 @@ export default class CrudCurso extends Component {
 
 
     }
-
+    //mudar coisas que tem curso 
     renderTable() {
         return (
             <div className="listagem">
                 <table className="listaAlunos" id="tblListaAlunos">
                     <thead>
                         <tr className="cabecTabela">
-                            <th className="tabTituloRa">Código do Curso</th>
-                            <th className="tabTituloNome">Nome</th>
-                            <th className="tabTituloCurso">Periodo</th>
+                            <th className="tabTituloRa">Código do Produto</th>
+                            <th className="tabTituloNome">Nome do Produto</th>
+                            <th className="tabTituloCurso">Data de Compra</th>
                             <th></th>
                             <th></th>
                         </tr>

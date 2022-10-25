@@ -3,7 +3,7 @@ import './CrudAluno.css';
 import Main from '../components/templates/Main';
 import axios from 'axios';
 import SincronizarOpcao from '../components/templates/SincronizarOpcao';
-const title = "Cadastro de Alunos";
+const title = "Cadastro de Cliente";
 
 const urlAPI = "http://localhost:5092/api/aluno";
 const initialState = {
@@ -76,14 +76,15 @@ export default class CrudAluno extends Component {
         
         return (
             <div className="inclui-container">
-            <label> RA: </label>
+            <label> Telefone: </label>
             <input
                 type="text"
-                id="ra"
-                placeholder="RA do aluno"
+                id="telefone"
+                placeholder="Telefone do Cliente"
                 className="form-input"
-                name="ra"
+                name="telefone"
 
+                //alterar depois
                 value={this.state.aluno.ra}
 
                 onChange={e => this.atualizaCampo(e)}
@@ -92,14 +93,15 @@ export default class CrudAluno extends Component {
             <input
                 type="text"
                 id="nome"
-                placeholder="Nome do aluno"
+                placeholder="Nome do Cliente"
                 className="form-input"
                 name="nome"
-
+        
+                // alterar depois
                 value={this.state.aluno.nome}
                 onChange={e => this.atualizaCampo(e)}
             />
-            <label> Código do Curso: </label>
+            <label> Código do Produto: </label>
                 <SincronizarOpcao/>
               
             <button className="btnSalvar"
@@ -114,12 +116,13 @@ export default class CrudAluno extends Component {
         )
     }
 
+    //alterar depois
     carregar(aluno) {
         // estados preparando para a atualizar os dados.
         // seto o estado de atualzação
         this.setState({ aluno: aluno,atualizar:true})
        
-    }
+    } //alterar depois
     remover(aluno) {
         const url = urlAPI + "/" + aluno.id;
         if (window.confirm("Confirma remoção do aluno: " + aluno.ra)) {
@@ -134,15 +137,16 @@ export default class CrudAluno extends Component {
 
     }
 
+    //alterar coisas que tem "aluno" no nome
     renderTable() {
         return (
-            <div className="listagem">
+            <div className="listagem"> 
                 <table className="listaAlunos" id="tblListaAlunos">
                     <thead>
                         <tr className="cabecTabela">
-                            <th className="tabTituloRa">Ra</th>
-                            <th className="tabTituloNome">Nome</th>
-                            <th className="tabTituloCurso">Curso</th>
+                            <th className="tabTituloRa">Telefone:</th>
+                            <th className="tabTituloNome">Nome:</th>
+                            <th className="tabTituloCurso">Código do Produto</th>
                             <th></th>
                             <th></th>
                         </tr>
