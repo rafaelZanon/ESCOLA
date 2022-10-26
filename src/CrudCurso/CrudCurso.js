@@ -11,7 +11,7 @@ const initialState = {
     lista: []
 }
 
-export default class CrudAluno extends Component {
+export default class CrudCurso extends Component {
     state = { ...initialState }
     componentDidMount() {
         axios(urlAPI).then(resp => {
