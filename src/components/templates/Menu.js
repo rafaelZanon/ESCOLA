@@ -2,14 +2,26 @@ import '../templates/Menu.css'
 export default function Menu(props) {
     return (
         <nav className='menu'>
+            <a href="/registrar">
+                Cadastre-se
+            </a>
+            <a href="/login">
+                Login
+            </a>
+            <a href="/">
+                Home
+            </a>
             <a href="/aluno">
-                Alunos
+                Clientes
             </a>
             <a href="/curso">
-                Cursos
+                Pedidos
             </a>
             <a href="/carometro">
-                Carômetro
+                Informações
+            </a>
+            <a href='/logout'>
+                logout
             </a>
         </nav>
     )

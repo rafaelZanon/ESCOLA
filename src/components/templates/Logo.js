@@ -1,4 +1,4 @@
-import './Logo.css';
+/*import './Logo.css';
 import React from 'react';
 import logo from '../../assets/logo_escola.png';
 export default function Logo(props) {
@@ -9,4 +9,4 @@ export default function Logo(props) {
             </a>
         </aside>
     )
-}
+}*/

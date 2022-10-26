@@ -7,7 +7,6 @@ import Rotas from '../src/Rotas';
 
 function App() {
   return (<div className="App">
-    <Logo />
     <Menu />
     <Rotas/>
     <Footer />
