@@ -5,6 +5,7 @@ import CrudCurso from './CrudCurso/CrudCurso';
 import Carometro from './carometro/Carometro';
 import Registrar from './RegisterPage';
 import Login from './loginPage';
+import Home from './components/Home/home';
 
 export default function Rotas() {
     return (
@@ -15,7 +16,8 @@ export default function Rotas() {
                 <Route path="/login"  element={<Login/>} component={Login} />
                 <Route path='/aluno' element={<CrudAluno/>} component={CrudAluno}/>            
                 <Route path='/curso' element={<CrudCurso/>} component={CrudCurso}/>
-                <Route path='/carometro' element={<Carometro/>} component={Carometro}/>            
+                <Route path='/carometro' element={<Carometro/>} component={Carometro}/>   
+                <Route path='/home' element={<Home/>} component={Home}/>            
             </Routes>
         </BrowserRouter>
         

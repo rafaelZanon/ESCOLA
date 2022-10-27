@@ -8,7 +8,7 @@ export default function Menu(props) {
             <a href="/login">
                 Login
             </a>
-            <a href="/">
+            <a href="/home">
                 Home
             </a>
             <a href="/aluno">
