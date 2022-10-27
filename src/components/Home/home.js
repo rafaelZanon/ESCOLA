@@ -7,8 +7,7 @@ function Home() {
       <div className="group-783 flex-col-hcenter">
         <div className="group-12 flex-col">
           <p className="txt-941">
-            Superfans
-            <span className="txt-9412">de Pixel</span>
+            Superfans de Pixel
           </p>
           <p className="txt-186">Coleção Google Pixel</p>
         </div>
