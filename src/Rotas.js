@@ -4,7 +4,7 @@ import CrudAluno from './CrudAluno/CrudAluno';
 import CrudCurso from './CrudCurso/CrudCurso';
 import Carometro from './carometro/Carometro';
 import Registrar from './RegisterPage';
-import Login from './loginPage';
+import Login from './loginPage/Login';
 import Home from './components/Home/home';
 
 export default function Rotas() {
