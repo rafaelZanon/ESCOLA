@@ -15,7 +15,7 @@ export default function Menu(props) {
                 Clientes
             </a>
             <a href="/produto">
-                Pedidos
+                Produtos
             </a>
             <a href="/listaClientes">
                 Informações
