@@ -1,43 +1,43 @@
-import React, { Component } from 'react';
-import '../../CrudAluno/CrudAluno.css';
+import React from 'react';
+import '../../CrudCliente/CrudCliente.css';
 
-export default function renderForm(aluno) {
+export default function renderForm(Cliente) {
 
 
     return (
         <div className="inclui-container">
-        <label> RA: </label>
+        <label> Usuário: </label>
         <input
             type="text"
-            id="ra"
-            placeholder="RA do aluno"
+            id="usuario"
+            placeholder="Usuário do Cliente"
             className="form-input"
-            name="ra"
+            name="usuario"
 
-            value={this.state.aluno.ra}
+            value={this.state.Cliente.UserName}
 
             onChange={e => this.atualizaCampo(e)}
         />
-        <label> Nome: </label>
+        <label> Nome Completo: </label>
         <input
             type="text"
             id="nome"
-            placeholder="Nome do aluno"
+            placeholder="Nome do Cliente"
             className="form-input"
             name="nome"
 
-            value={this.state.aluno.nome}
+            value={this.state.Cliente.RealName}
             onChange={e => this.atualizaCampo(e)}
         />
-        <label> Código do Curso: </label>
+        <label> Email: </label>
         <input
-            type="number"
-            id="codCurso"
-            placeholder="0"
+            type="email"
+            id="email"
+            placeholder="Email Do Cliente"
             className="form-input"
-            name="codCurso"
+            name="email"
 
-            value={this.state.aluno.codCurso}
+            value={this.state.Cliente.Email}
             onChange={e => this.atualizaCampo(e)}
         />
         <button className="btnSalvar"

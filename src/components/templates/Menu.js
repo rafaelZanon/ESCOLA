@@ -11,13 +11,13 @@ export default function Menu(props) {
             <a href="/home">
                 Home
             </a>
-            <a href="/aluno">
+            <a href="/cliente">
                 Clientes
             </a>
-            <a href="/curso">
+            <a href="/produto">
                 Pedidos
             </a>
-            <a href="/carometro">
+            <a href="/listaClientes">
                 Informações
             </a>
             <a href='/logout'>

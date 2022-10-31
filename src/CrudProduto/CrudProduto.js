@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import './CrudCurso.css';
+import './CrudProduto.css';
 import Main from '../components/templates/Main';
 import axios from 'axios';
 const title = "Consulta e Cadastro de Produto";
-//ALTERAR TUDO QUE TEM CURSO 
+//ALTERAR TUDO QUE TEM CSS
 
-const urlAPI = "http://localhost:5092/api/curso";
+const urlAPI = "http://localhost:5092/api/Produto";
 const initialState = {
-    curso: { id: 0, codCurso: 0, nomeCurso: '', periodo: ''},
+    Produto: { id: 0, codProd: 0, nomeProd: '', dataProd: ''},
     lista: []
 }
 
-export default class CrudCurso extends Component {
+export default class CrudProduto extends Component {
     state = { ...initialState }
     componentDidMount() {
         axios(urlAPI).then(resp => {
@@ -22,21 +22,21 @@ export default class CrudCurso extends Component {
     }
 
     limpar() {
-        this.setState({ curso: initialState.curso });
+        this.setState({ Produto: initialState.Produto });
     }
     salvar() {
-        const curso = this.state.curso;
-        curso.codCurso = Number(curso.codCurso);
+        const Produto = this.state.Produto;
+        Produto.codProd = Number(Produto.codProd);
         const metodo = 'post';
-        axios[metodo](urlAPI, curso)
+        axios[metodo](urlAPI, Produto)
             .then(resp => {
                 const lista = this.getListaAtualizada(resp.data)
-                this.setState({ curso: initialState.curso, lista })
+                this.setState({ Produto: initialState.Produto, lista })
             })
     }
-    getListaAtualizada(curso) {
-        const lista = this.state.lista.filter(a => a.id !== curso.id);
-        lista.unshift(curso);
+    getListaAtualizada(Produto) {
+        const lista = this.state.lista.filter(a => a.id !== Produto.id);
+        lista.unshift(Produto);
         axios(urlAPI).then(resp => {
             this.setState({ lista: resp.data })
         })
@@ -44,11 +44,11 @@ export default class CrudCurso extends Component {
     }
     atualizaCampo(event) {
         //clonar usuário a partir do state, para não alterar o state diretamente
-        const curso = { ...this.state.curso };
+        const Produto = { ...this.state.Produto };
         //usar o atributo NAME do input para identificar o campo a ser atualizado
-        curso[event.target.name] = event.target.value;
+        Produto[event.target.name] = event.target.value;
         //atualizar o state
-        this.setState({ curso });
+        this.setState({ Produto });
     }
     renderForm() {
         return (
@@ -60,31 +60,31 @@ export default class CrudCurso extends Component {
                 placeholder="Código do Produto"
                 className="form-input"
                 name="codProd"
-                //alterar depois que tem curso
-                value={this.state.curso.codCurso}
+                //alterar depois que tem CSS
+                value={this.state.Produto.codProd}
                 onChange={e => this.atualizaCampo(e)}
             />
             <label> Nome do Produto: </label>
             <input
                 type="text"
-                id="nomeProduto"
+                id="nomeProd"
                 placeholder="Nome do Produto"
                 className="form-input"
-                name="nomeProduto"
-                //alterar depois que tem curso
-                value={this.state.curso.nomeCurso}
+                name="nomeProd"
+                //alterar depois que tem CSS
+                value={this.state.Produto.nomeProd}
                 onChange={e => this.atualizaCampo(e)}
             />
             
              <label> Data do Pedido: </label>
             <input
                 type="date"
-                id="data"
+                id="dataProd"
                 placeholder="**/**/****"
                 className="form-input"
-                name="data"
-                //alterar depois que tem curso
-                value={this.state.curso.periodo}
+                name="dataProd"
+                //alterar depois que tem CSS
+                value={this.state.Produto.dataProd}
                 onChange={e => this.atualizaCampo(e)}
             />
             <button className="btnSalvar"
@@ -99,28 +99,28 @@ export default class CrudCurso extends Component {
         )
     }
 
-    carregar(curso) {
-        this.setState({ curso })
+    carregar(Produto) {
+        this.setState({ Produto })
     }
-    remover(curso) {
-        const url = urlAPI + "/" + curso.id;
-        if (window.confirm("Confirma remoção de curso: " + curso.id)) {
+    remover(Produto) {
+        const url = urlAPI + "/" + Produto.id;
+        if (window.confirm("Confirma remoção de Produto: " + Produto.id)) {
             console.log("entrou no confirm");
-            axios['delete'](url, curso)
+            axios['delete'](url, Produto)
                 .then(resp => {
-                    const lista = this.getListaAtualizada(curso)
+                    const lista = this.getListaAtualizada(Produto)
                     console.log('entrou no THEN')
-                    this.setState({ curso: initialState.curso, lista })
+                    this.setState({ Produto: initialState.Produto, lista })
                 })
         }
 
 
     }
-    //mudar coisas que tem curso 
+    //mudar coisas que tem CSS
     renderTable() {
         return (
             <div className="listagem">
-                <table className="listaAlunos" id="tblListaAlunos">
+                <table className="listaAlunos" id="tblListaProdutos">
                     <thead>
                         <tr className="cabecTabela">
                             <th className="tabTituloRa">Código do Produto</th>
@@ -132,18 +132,18 @@ export default class CrudCurso extends Component {
                     </thead>
                     <tbody>
                         {this.state.lista.map(
-                            (curso) =>
-                                <tr key={curso.id}>
-                                    <td>{curso.codCurso}</td>
-                                    <td>{curso.nomeCurso}</td>
-                                    <td>{curso.periodo}</td>
+                            (Produto) =>
+                                <tr key={Produto.id}>
+                                    <td>{Produto.codProd}</td>
+                                    <td>{Produto.nomeProd}</td>
+                                    <td>{Produto.dataProd}</td>
                                     <td>
-                                        <button onClick={() => this.carregar(curso)} >
+                                        <button onClick={() => this.carregar(Produto)} >
                                             Altera
                                         </button>
                                     </td>
                                     <td>
-                                        <button onClick={() => this.remover(curso)} >
+                                        <button onClick={() => this.remover(Produto)} >
                                             Remove
                                         </button>
                                     </td>

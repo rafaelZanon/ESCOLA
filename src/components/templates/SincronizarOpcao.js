@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-const getCurso = "http://localhost:5092/api/curso";
+const getProduto = "http://localhost:5092/api/Produto";
 
-const cursoState = {
-    curso: { id: 0, codCurso: 0, nomeCurso: '', periodo: '' },
+const produtoState = {
+    produto: { id: 0, codProd: 0, nomeProd: '', dataProd: '' },
     lista: []
 }
 
 
 export default class SincronizarOpcao extends Component {
-    state = { ...cursoState }
+    state = { ...produtoState }
     componentDidMount() {
 
-        axios(getCurso).then(resp => {
+        axios(getProduto).then(resp => {
 
             this.setState({ lista: resp.data })
             
@@ -21,9 +21,9 @@ export default class SincronizarOpcao extends Component {
    
     render() {
         return (
-            <select id='cursoOption'>{this.state.lista.map(
-                (cursos) =>
-                    <option key={cursos.id} value={cursos.codCurso}>{cursos.nomeCurso}</option>
+            <select id='EmailOption'>{this.state.lista.map(
+                (produtos) =>
+                    <option key={produtos.id} value={produtos.codProd}>{produtos.nomeProd}</option>
             )}</select>
         )
     }

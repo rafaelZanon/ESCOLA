@@ -6,14 +6,14 @@ import { Card } from 'react-bootstrap';
 import PerfilImagem from '../api/perfilImagens';
 //ALTERAR TUDO QUE TEM CURSO  e ALUNO
 
-const urlAPI = "http://localhost:5092/api/aluno";
+const urlAPI = "http://localhost:5092/api/Cliente";
 const initialState = {
-    aluno: { id: 0, ra: '', nome: '', codCurso: 0, },
+    Cliente: { id: 0, UserName: '', RealName: '', Email: 0 },
     lista: [],
     // Novo estado para definir quando eu estou atualizando e vise versa
 }
 
-export default class Carometro extends Component {
+export default class ListagemClientes extends Component {
     state = { ...initialState }
 
     componentDidMount() {
@@ -29,8 +29,8 @@ export default class Carometro extends Component {
         return (
             <div style={{ width: 120 }}>
                 {this.state.lista.map(
-                    (aluno) =>
-                        <Card key={aluno.id} style={{
+                    (cliente) =>
+                        <Card key={cliente.id} style={{
                             border: "1px solid #03506f",
                             borderRadius: "30px",
                             padding: "10px",
@@ -46,11 +46,11 @@ export default class Carometro extends Component {
                             <PerfilImagem></PerfilImagem>
 
                             <Card.Body>
-                                <Card.Title>{aluno.ra}</Card.Title>
+                                <Card.Title>{cliente.UserName}</Card.Title>
                                 <Card.Text>
-                                    {aluno.nome}
+                                    {cliente.RealName}
                                 </Card.Text>
-                                <Card.Text>Código do curso: {aluno.codCurso} </Card.Text>
+                                <Card.Text>Email do Cliente: {cliente.Email} </Card.Text>
                                 <Card.Text>
 
                                 </Card.Text>
