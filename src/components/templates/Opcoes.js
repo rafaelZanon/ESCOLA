@@ -8,7 +8,7 @@ const produtoState = {
 }
 
 
-export default class SincronizarOpcao extends Component {
+export default class Opcoes extends Component {
     state = { ...produtoState }
     componentDidMount() {
 

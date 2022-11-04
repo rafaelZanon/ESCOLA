@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./CrudCliente.css";
 import Main from "../components/templates/Main";
 import axios from "axios";
-import SincronizarOpcao from "../components/templates/SincronizarOpcao";
+import Opcoes from "../components/templates/Opcoes";
 const title = "Cadastro de Cliente";
 
 const urlAPI = "http://localhost:5092/api/Cliente";
@@ -114,7 +114,7 @@ export default class CrudCliente extends Component {
           defaultValue={this.state.Cliente.email}
           onChange={(e) => this.atualizaCampo(e)}
         />
-        <SincronizarOpcao />
+        <Opcoes />
 
         <button className="btnSalvar" onClick={(e) => this.salvar(e)}>
           Salvar

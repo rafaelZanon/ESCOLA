@@ -121,7 +121,7 @@ function Home() {
           alt="Not Found"
           className="image-4"
         />
-        <p className="txt-073 flex-hcenter">Sair</p>
+        <p className="txt-073 flex-hcenter"><button className="">Sair</button></p>
       </div>
     </div>
   );

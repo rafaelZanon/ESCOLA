@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import CrudCliente from './CrudCliente/CrudCliente';
 import CrudProduto from './CrudProduto/CrudProduto';
 import ListaClientes from './ListaClientes/ListaClientes';
-import Registrar from './RegisterPage';
+import Registrar from './RegisterPage/Register';
 import Login from './loginPage/Login';
 import Home from './components/Home/home';
 
