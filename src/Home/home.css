@@ -512,3 +512,17 @@ p {
     width: 103px;
     word-wrap: break-word;
   }
+
+  .buttonSair {
+    width: 108px;
+    height: 41px;
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 30px;
+    font-family: Poppins, sans-serif;
+  }
+
+  

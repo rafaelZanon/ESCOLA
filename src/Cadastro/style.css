@@ -1,0 +1,143 @@
+.cadastro {
+  color: #202124;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 16px;
+  display: flex;
+}
+
+.container{
+}
+
+.group-13 {
+  object-fit: cover;
+}
+
+.frame-6 {
+  border: 1px solid #d9dce0;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 22px;
+  display: flex;
+}
+
+.flex-container {
+  color: #5f6368;
+  width: 20%;
+  justify-content: space-between;
+  align-self: flex-start;
+  margin-left: 16px;
+  font-family: Roboto;
+  font-weight: 400;
+  display: flex;
+}
+
+.brands-google {
+  width: 20px;
+  height: 16px;
+}
+
+.google-store {
+  margin-right: -33px;
+}
+
+.criar-conta {
+  text-align: center;
+  font-size: 1.438rem;
+  line-height: 35px;
+}
+
+.campoSenha {
+  box-sizing: border-box;
+  margin-top: 10%;
+  width: 350px;
+}
+
+.campoEmail {
+  box-sizing: border-box;
+  margin-top: 10%;
+  width: 350px;
+}
+
+.inputEmail {
+  border: 1px solid #D9DCE0;
+  border-radius: 8px;
+}
+
+.inputSenha {
+  border: 1px solid #D9DCE0;
+  border-radius: 8px;
+}
+
+.criarConta {
+  position: absolute;
+  width: 100px;
+  left: 40px;
+  top: 381px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #1A73E8;
+
+}
+
+.buttonCadastro {
+  width: 108px;
+  height: 41px;
+  background: #1A73E8;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttonLogin {
+  width: 108px;
+  height: 41px;
+  background: #1A73E8;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  right: 765px;
+}
+
+.textButton{
+font-family: 'Poppins';
+font-weight: 600;
+font-size: 12px;
+text-align: center;
+cursor: pointer;
+color: #FFFFFF;
+}
+
+.buttons{
+  padding-top: 5%;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 30px;
+  color: #D2DAF5;
+  /*font-family: Poppins;*/
+}
+
+input{
+  width: 100%;
+  border-radius: 10px;
+  border: 0;
+  outline: 0;
+  font-size: 1.2rem;
+  padding-left: 15px;
+  height: 50px;
+}
