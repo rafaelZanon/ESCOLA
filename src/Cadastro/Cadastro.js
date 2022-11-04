@@ -3,9 +3,38 @@ import rectangle3 from "../assets/rectangle3.svg";
 import brandsGoogle from "../assets/brandsGoogle.svg";
 import rectangle4 from "../assets/rectangle4.svg";
 import group13 from "../assets/group13.svg";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
+import  AuthService  from '../services/AuthService'
 const Cadastro = () => {
- 
+
+  const navigate = useNavigate();
+
+  const [msg, setMsg] = useState("");
+
+  const registrar = () => {
+    const userName = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    const role = "Cliente";
+    
+
+
+    const json ={
+      id: 0,
+      userName: userName,
+      email: email,
+      senha: senha,
+      role: role
+    }
+
+    axios.post("http://localhost:5092/api/Cliente", json).then(event => {setMsg("Conta criada com Sucesso!"); navigate("/home"); 
+                                                               AuthService.login(email, senha);});
+    
+    
+  }
+
   return (
     <div className="container">
       <div className="cadastro">
@@ -15,52 +44,83 @@ const Cadastro = () => {
             <img className="brands-google" src={brandsGoogle} />
             <span className="google-store">Google Store</span>
           </div>
-          
+
           <img className="rectangle-3" src={rectangle3} />
           <span className="criar-conta">Criar conta</span>
-          
+
           <form>
-        <div className="campoEmail">
-            <label>Usuário</label>
-            <input className="inputEmail" name="usuario" placeholder='Digite seu Usuario'/>
-           
-        </div>
+            <div className="campoEmail">
+              <label>Usuário</label>
+              <input
+                className="inputEmail"
+                name="usuario"
+                placeholder="Digite seu Usuario"
+                id="username"
+              />
+            </div>
 
-        <div className="campoEmail">
-            <label>Email</label>
-            <input className="inputEmail" type="email" name="email" placeholder='Digite seu Email'/>
-           
-        </div>
+            <div className="campoEmail">
+              <label>Email</label>
+              <input
+                className="inputEmail"
+                type="email"
+                name="email"
+                placeholder="Digite seu Email"
+                id="email"
+              />
+            </div>
 
-        <div className="campoEmail">
-            <label>Confirme seu email</label>
-            <input className="inputEmail" type="email" name="email" placeholder='Confirme seu Email'/>
+            <div className="campoEmail">
+              <label>Confirme seu email</label>
+              <input
+                className="inputEmail"
+                type="email"
+                name="email"
+                placeholder="Confirme seu Email"
+              />
+            </div>
+
+            <div className="campoSenha">
+              <label>Senha</label>
+              <input
+                className="inputSenha"
+                type="password"
+                name="password"
+                placeholder="Digite sua Senha"
+                id="senha"
+              />
+            </div>
+
+            <div className="campoSenha">
+              <label>Confirme sua senha</label>
+              <input
+                className="inputSenha"
+                type="password"
+                name="password"
+                placeholder="Confirme sua Senha"
+              ></input>
+            </div>
+
+            <div>{msg}</div>
+
             
-        </div>
-
-        <div className="campoSenha">
-            <label>Senha</label>
-            <input className="inputSenha" type="password" name="password" placeholder='Digite sua Senha'/>
-           
-        </div>
-
-        <div className="campoSenha">
-            <label>Confirme sua senha</label>
-            <input className="inputSenha" type="password" name="password" placeholder='Confirme sua Senha'></input>
-        </div>
-
-        <div className="buttons">
-            <button className="buttonCadastro" type="submit"><p className="textButton">Cadastrar!</p></button>
-              
-            <a href='/login'><button className="buttonLogin" type='button'><p className="textButton">Já tenho Conta</p></button></a>
-        </div>
-
-    </form>
+          </form>
           <img className="rectangle-4" src={rectangle4} />
+          <div className="buttons">
+              <button className="buttonCadastro" onClick={event => registrar()}>
+                <p className="textButton">Cadastrar!</p>
+              </button>
+
+              <a href="/login">
+                <button className="buttonLogin" type="button">
+                  <p className="textButton">Já tenho Conta</p>
+                </button>
+              </a>
+            </div>
+
         </div>
       </div>
     </div>
-  
   );
 };
 export default Cadastro;

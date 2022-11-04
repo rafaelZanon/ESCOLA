@@ -1,3 +1,4 @@
+import AuthService from '../../services/AuthService'
 import '../templates/Menu.css'
 export default function Menu(props) {
     return (
@@ -17,10 +18,10 @@ export default function Menu(props) {
             <a href="/produto">
                 Produtos
             </a>
-            <a href="/listaClientes">
+            <a href="/listaCliente">
                 Informações
             </a>
-            <a href='/logout'>
+            <a href='/logout' onClick={event => AuthService.logout()}>
                 logout
             </a>
         </nav>

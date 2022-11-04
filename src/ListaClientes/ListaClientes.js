@@ -8,15 +8,16 @@ import PerfilImagem from '../api/perfilImagens';
 
 const urlAPI = "http://localhost:5092/api/Cliente";
 const initialState = {
-    Cliente: { id: 0, UserName: '', RealName: '', Email: 0 },
+    Cliente: { id: 0, userName: "", realName: "", email: "" },
     lista: [],
     // Novo estado para definir quando eu estou atualizando e vise versa
 }
 
-export default class ListagemClientes extends Component {
+export default class ListaClientes extends Component {
     state = { ...initialState }
 
     componentDidMount() {
+
         axios(urlAPI).then(resp => {
             this.setState({ lista: resp.data })
 
@@ -46,11 +47,11 @@ export default class ListagemClientes extends Component {
                             <PerfilImagem></PerfilImagem>
 
                             <Card.Body>
-                                <Card.Title>{cliente.UserName}</Card.Title>
+                                <Card.Title>{cliente.userName}</Card.Title>
                                 <Card.Text>
-                                    {cliente.RealName}
+                                    {cliente.realName}
                                 </Card.Text>
-                                <Card.Text>Email do Cliente: {cliente.Email} </Card.Text>
+                                <Card.Text>Email do Cliente: {cliente.email} </Card.Text>
                                 <Card.Text>
 
                                 </Card.Text>

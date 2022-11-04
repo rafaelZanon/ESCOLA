@@ -1,7 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../services/AuthService";
 import "./home.css";
 
 function Home() {
+
+  const navigate = useNavigate();
+
   return (
     <div className="new-site flex-col-hstart-vstart clip-contents">
       <div className="group-783 flex-col-hcenter">
@@ -121,7 +126,7 @@ function Home() {
           alt="Not Found"
           className="image-4"
         />
-        <p className="txt-073 flex-hcenter"><button className="buttonSair">Sair</button></p>
+        <p className="txt-073 flex-hcenter"><button className="buttonSair" onClick={event => {AuthService.logout(); navigate("/login")}}>Sair</button></p>
       </div>
     </div>
   );
