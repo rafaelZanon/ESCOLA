@@ -9,14 +9,12 @@
   display: flex;
 }
 
-.container{
-}
 
-.group-13 {
+.cabecalho {
   object-fit: cover;
 }
 
-.frame-6 {
+.quadrado {
   border: 1px solid #d9dce0;
   border-radius: 8px;
   flex-direction: column;
@@ -37,7 +35,7 @@
   display: flex;
 }
 
-.brands-google {
+.marca-google {
   width: 20px;
   height: 16px;
 }

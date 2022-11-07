@@ -2,26 +2,29 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/AuthService";
 import "./home.css";
+import Menu from "../components/templates/Menu";
 
 function Home() {
 
   const navigate = useNavigate();
 
   return (
-    <div className="new-site flex-col-hstart-vstart clip-contents">
-      <div className="group-783 flex-col-hcenter">
-        <div className="group-12 flex-col">
-          <p className="txt-941">
+    <div>
+      <Menu></Menu>
+    <div className="site flex-col-hstart-vstart clip-contents">
+      <div className="tamanhoCell flex-col-hcenter">
+        <div className="groupCelulares flex-col">
+          <p className="txtFans">
             Superfans de Pixel
           </p>
-          <p className="txt-186">Coleção Google Pixel</p>
+          <p className="txtColecao">Coleção Google Pixel</p>
         </div>
-        <div className="group-14 flex-col-hcenter-vstart">
-          <p className="txt-717 flex-hcenter">Made by Google</p>
-          <div className="group-11 flex-row-vstart-hstart">
-            <div className="group-5 flex-col-hcenter">
-              <p className="txt-137">Pixel 7 Pro</p>
-              <p className="txt-879">
+        <div className="GrupoCells flex-col-hcenter-vstart">
+          <p className="txtMade flex-hcenter">Made by Google</p>
+          <div className="groupBox flex-row-vstart-hstart">
+            <div className="groupBoxTwo flex-col-hcenter">
+              <p className="txtPixel">Pixel 7 Pro</p>
+              <p className="txtProfissional">
                 O telefone totalmente profissional do Google.
               </p>
               <img
@@ -128,6 +131,7 @@ function Home() {
         />
         <p className="txt-073 flex-hcenter"><button className="buttonSair" onClick={event => {AuthService.logout(); navigate("/login")}}>Sair</button></p>
       </div>
+    </div>
     </div>
   );
 }

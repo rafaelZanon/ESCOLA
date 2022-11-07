@@ -3,13 +3,14 @@ import "./CrudCliente.css";
 import Main from "../components/templates/Main";
 import axios from "axios";
 import Opcoes from "../components/templates/Opcoes";
+import Menu from "../components/templates/Menu";
 const title = "Cadastro de Cliente";
 
 const urlAPI = "http://localhost:5092/api/Cliente";
 const initialState = {
-  Cliente: { id: 0, userName: "", realName: "", email: "" },
+  Cliente: { id: 0, userName: "", role: "", email: "" },
   lista: [],
-  // Novo estado para definir quando eu estou atualizando e vise versa
+
   atualizar: false,
 };
 
@@ -22,7 +23,6 @@ export default class CrudCliente extends Component {
     });
   }
 
-  // Atualização com um clone do estado e as novas informações que o cliente preencher
   atualizar(id) {
     const Cliente = this.state.Cliente;
     Cliente.id = id;
@@ -31,7 +31,7 @@ export default class CrudCliente extends Component {
     console.log(Cliente);
     axios[metodo](`${urlAPI}/${id}`, Cliente).then((resp) => {
       const lista = this.getListaAtualizada(resp.data);
-      // Setando meu estado inicial apos a atualização
+
       this.setState({ Cliente: initialState.Cliente, lista, atualizar: false });
     });
   }
@@ -42,22 +42,21 @@ export default class CrudCliente extends Component {
   salvar() {
     const Cliente = this.state.Cliente;
     const UserName = document.getElementById("usuario").value;
-    const RealName = document.getElementById("nome").value;
+    const role = document.getElementById("role").value;
     const Email = document.getElementById("email").value;
     if (!this.state.atualizar) {
-      
       const metodo = "post";
       const Json = {
         id: 0,
         userName: UserName,
-        realName: RealName,
-        email: Email}
-      
+        role: role,
+        email: Email,
+      };
+
       axios[metodo](urlAPI, Json).then((resp) => {
         const lista = this.getListaAtualizada(resp.data);
         console.log(lista);
         this.setState({ Cliente: initialState.Cliente, lista });
-        
       });
     } else this.atualizar(Cliente.id);
   }
@@ -71,16 +70,16 @@ export default class CrudCliente extends Component {
     return lista;
   }
   atualizaCampo(event) {
-    //clonar usuário a partir do state, para não alterar o state diretamente
     const Cliente = { ...this.state.Cliente };
-    //usar o atributo NAME do input para identificar o campo a ser atualizado
+
     Cliente[event.target.name] = event.target.value;
-    //atualizar o state
+
     this.setState({ Cliente });
   }
   renderForm() {
     return (
-      <div className="inclui-container">
+      
+      <div className="inserir-container">
         <label> Usuário </label>
         <input
           type="text"
@@ -88,19 +87,17 @@ export default class CrudCliente extends Component {
           placeholder="Usuário do Cliente"
           className="form-input"
           name="usuario"
-          //alterar depois
           defaultValue={this.state.Cliente.userName}
           onChange={(e) => this.atualizaCampo(e)}
         />
-        <label> Nome Completo: </label>
+        <label> Prioridade: </label>
         <input
           type="text"
-          id="nome"
-          placeholder="Nome do Cliente"
+          id="role"
+          placeholder="Cliente ou Adm?"
           className="form-input"
-          name="nome"
-          // alterar depois
-          defaultValue={this.state.Cliente.realName}
+          name="role"
+          defaultValue={this.state.Cliente.role}
           onChange={(e) => this.atualizaCampo(e)}
         />
         <label> Email: </label>
@@ -110,7 +107,6 @@ export default class CrudCliente extends Component {
           placeholder="Email do Cliente"
           className="form-input"
           name="email"
-          // alterar depois
           defaultValue={this.state.Cliente.email}
           onChange={(e) => this.atualizaCampo(e)}
         />
@@ -126,12 +122,9 @@ export default class CrudCliente extends Component {
     );
   }
 
-  //alterar depois
   carregar(Cliente) {
-    // estados preparando para a atualizar os dados.
-    // seto o estado de atualzação
     this.setState({ Cliente: Cliente, atualizar: true });
-  } //alterar depois
+  }
   remover(Cliente) {
     const url = urlAPI + "/" + Cliente.id;
     if (window.confirm("Confirma remoção do Cliente: " + Cliente.userName)) {
@@ -142,16 +135,15 @@ export default class CrudCliente extends Component {
     }
   }
 
-  //alterar coisas que tem "aluno" no nome
   renderTable() {
     return (
       <div className="listagem">
-        <table className="listaAlunos" id="tblListaClientes">
+        <table className="listaClientes" id="tblListaClientes">
           <thead>
             <tr className="cabecTabela">
-              <th className="tabTituloRa">Usuário: </th>
-              <th className="tabTituloNome">Nome: </th>
-              <th className="tabTituloCurso">Email: </th>
+              <th className="tabTituloUsuario">Usuário: </th>
+              <th className="tabTituloPrioridade">Prioridade: </th>
+              <th className="tabTituloEmail">Email: </th>
               <th></th>
               <th></th>
             </tr>
@@ -160,7 +152,7 @@ export default class CrudCliente extends Component {
             {this.state.lista.map((Cliente) => (
               <tr key={Cliente.id}>
                 <td>{Cliente.userName}</td>
-                <td>{Cliente.realName}</td>
+                <td>{Cliente.role}</td>
                 <td>{Cliente.email}</td>
                 <td>
                   <button onClick={() => this.carregar(Cliente)}>Altera</button>
@@ -178,6 +170,7 @@ export default class CrudCliente extends Component {
   render() {
     return (
       <Main title={title}>
+        {<Menu></Menu>}
         {this.renderForm()}
         {this.renderTable()}
       </Main>

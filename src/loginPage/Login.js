@@ -1,7 +1,31 @@
+import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router";
+import AuthService from "../services/AuthService";
 import "./Login.css";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const loginPage = () => {
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    AuthService.login(email, senha).then(
+      () => {
+        navigate("/Home");
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+      }
+    );
+  };
+
   return (
     <div className="login container clip-contents">
       <img
@@ -31,6 +55,7 @@ function Login() {
                     className="inputEmail"
                     type="email"
                     name="email"
+                    id="email"
                     placeholder="Insira seu Email:"
                   />
                   <p className="error-message"></p>
@@ -38,6 +63,7 @@ function Login() {
                 <div className="campoSenha">
                   <input
                     className="inputSenha"
+                    id="senha"
                     type="password"
                     name="password"
                     placeholder="Insira sua Senha:"
@@ -48,11 +74,11 @@ function Login() {
                   <a href="/registrar">
                     <p className="criarConta">Criar conta</p>
                   </a>
-                  <button type="submit" className="buttonProximo">
-                    <text className="textButtonProximo">Próximo</text>
-                  </button>
                 </div>
               </form>
+              <button className="buttonProximo" onClick={event => loginPage()}>
+                    <text className="textButtonProximo">Próximo</text>
+              </button>
             </div>
           </div>
 

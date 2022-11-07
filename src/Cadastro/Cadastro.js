@@ -2,7 +2,7 @@ import "./style.css";
 import rectangle3 from "../assets/rectangle3.svg";
 import brandsGoogle from "../assets/brandsGoogle.svg";
 import rectangle4 from "../assets/rectangle4.svg";
-import group13 from "../assets/group13.svg";
+import cabecalho from "../assets/group13.svg";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -36,12 +36,12 @@ const Cadastro = () => {
   }
 
   return (
-    <div className="container">
+    <div>
       <div className="cadastro">
-        <img className="group-13" src={group13} />
-        <div className="frame-6">
+        <img className="cabecalho" src={cabecalho} />
+        <div className="quadrado">
           <div className="flex-container">
-            <img className="brands-google" src={brandsGoogle} />
+            <img className="marca-google" src={brandsGoogle} />
             <span className="google-store">Google Store</span>
           </div>
 

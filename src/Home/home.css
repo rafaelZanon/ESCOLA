@@ -61,19 +61,19 @@ p {
     align-items: center;
   }
   
-  .new-site {
+  .site {
     position: relative;
     background-color: rgba(255, 255, 255, 1);
     width: 1920px;
     height: 4982px;
   }
 
-  .group-783 {
+  .tamanhoCell {
     width: 100%;
     height: 100%;
   }
   
-  .group-12 {
+  .groupCelulares {
     padding: 195px 1213px 24px 363px;
     margin-bottom: 48px;
     box-sizing: border-box;
@@ -82,7 +82,7 @@ p {
     width: 100%;
   }
 
-  .txt-941 {
+  .txtFans {
     font-size: 48px;
     font-family: Poppins, sans-serif;
     font-weight: 600;
@@ -97,7 +97,7 @@ p {
     
   }
   
-  .txt-186 {
+  .txtColecao {
     font-size: 24px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
@@ -112,7 +112,7 @@ p {
     width: fit-content;
   }
   
-  .txt-717 {
+  .txtMade {
     font-size: 56px;
     font-family: Poppins, sans-serif;
     font-weight: 600;
@@ -123,13 +123,13 @@ p {
     margin-bottom: 72px;
   }
   
-  .group-11 {
+  .groupBox {
     margin-bottom: 72px;
     box-sizing: border-box;
     width: fit-content;
   }
   
-  .group-5 {
+  .groupBoxTwo {
     padding: 31px 0px 0px 0px;
     margin-right: 20px;
     box-sizing: border-box;
@@ -138,7 +138,7 @@ p {
     height: 100%;
   }
   
-  .txt-137 {
+  .txtPixel {
     font-size: 32px;
     font-family: Roboto, sans-serif;
     font-weight: 600;
@@ -148,7 +148,7 @@ p {
     margin-bottom: 15px;
   }
   
-  .txt-879 {
+  .txtProfissional{
     font-size: 16px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
@@ -162,7 +162,7 @@ p {
     width: 100%;
   }
   
-  .group-4 {
+  .GrupoCells{
     padding: 31px 0px 0px 0px;
     margin-right: 20px;
     box-sizing: border-box;

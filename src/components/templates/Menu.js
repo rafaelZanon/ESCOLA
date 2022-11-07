@@ -1,29 +1,37 @@
+import { useEffect } from 'react';
 import AuthService from '../../services/AuthService'
 import '../templates/Menu.css'
 export default function Menu(props) {
+
+    const role = AuthService.getCurrentUser().user.role;
+
+
+    useEffect(() =>{
+        console.log(role);
+    },[role])
+
     return (
-        <nav className='menu'>
-            <a href="/registrar">
-                Cadastre-se
-            </a>
-            <a href="/login">
-                Login
-            </a>
+        <>
+            {role == "Admin" ?  
+            <nav className='menu'>
+            <text className='txtAdmin'>Menu do ADMIN : </text>
             <a href="/home">
-                Home
+                Home |
             </a>
             <a href="/cliente">
-                Clientes
+                Clientes |
             </a>
             <a href="/produto">
-                Produtos
+                Produtos |
             </a>
             <a href="/listaCliente">
-                Informações
+                Informações |
             </a>
-            <a href='/logout' onClick={event => AuthService.logout()}>
-                logout
+            <a href='/login' onClick={event => AuthService.logout()}>
+                Sair?
             </a>
-        </nav>
+                </nav> : null}
+        </>
+       
     )
 }

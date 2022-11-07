@@ -23,7 +23,7 @@ export default class PerfilImagem extends Component {
            <div>
                {this.state.lista.map(
                    (e) =>
-                   <img style={{width: "150px"}} src={e.url}/>
+                   <img style={{width: "150px", height: "75px"}} src={e.url}/>
                )}
            </div>
 

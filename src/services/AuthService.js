@@ -1,14 +1,13 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:5092/api/Home/login";
-
-const login = (username,senha) => {
+const login = (email,senha) => {
     // i need to token so, i get request and await response
     return axios
         .post(API_URL, {
             id: 0,
             userName: "string",
-            email: username,
+            email: email,
             senha: senha,
             role: "string"
         })

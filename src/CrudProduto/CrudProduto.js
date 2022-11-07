@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-
+import Menu from "../components/templates/Menu";
 import Main from "../components/templates/Main";
 import axios from "axios";
 const title = "Consulta e Cadastro de Produto";
+
 //ALTERAR TUDO QUE TEM CSS
 
 const urlAPI = "http://localhost:5092/api/Produto";
@@ -41,7 +42,7 @@ export default class CrudProduto extends Component {
       const lista = this.getListaAtualizada(resp.data);
       this.setState({ Produto: initialState.Produto, lista });
     });
-    this.state.atualizar = false
+    this.state.atualizar = false;
   }
   getListaAtualizada(Produto) {
     const lista = this.state.lista.filter((a) => a.id !== Produto.id);
@@ -61,10 +62,10 @@ export default class CrudProduto extends Component {
   }
   renderForm() {
     return (
-      <div className="inclui-container">
+      <div className="inserir-container">
         <label> Código do Produto: </label>
         <input
-          type="number"
+          type="text"
           id="codProd"
           placeholder="Código do Produto"
           className="form-input"
@@ -91,6 +92,7 @@ export default class CrudProduto extends Component {
           id="dataProd"
           className="form-input"
           name="dataProd"
+          placeholder="Data do Pedido"
           //alterar depois que tem CSS
           value={this.state.Produto.dataProd}
           onChange={(e) => this.atualizaCampo(e)}
@@ -98,9 +100,11 @@ export default class CrudProduto extends Component {
         <button className="btnSalvar" onClick={(e) => this.salvar(e)}>
           Salvar
         </button>
-        { this.state.atualizar && <button className="btnSalvar" onClick={(e) => this.atualizar(e)}>
-          Atualizar
-        </button>}
+        {this.state.atualizar && (
+          <button className="btnSalvar" onClick={(e) => this.atualizar(e)}>
+            Atualizar
+          </button>
+        )}
         <button className="btnCancelar" onClick={(e) => this.limpar(e)}>
           Cancelar
         </button>
@@ -127,12 +131,12 @@ export default class CrudProduto extends Component {
   renderTable() {
     return (
       <div className="listagem">
-        <table className="listaAlunos" id="tblListaProdutos">
+        <table className="listaProdutos" id="tblListaProdutos">
           <thead>
             <tr className="cabecTabela">
-              <th className="tabTituloRa">Código do Produto</th>
-              <th className="tabTituloNome">Nome do Produto</th>
-              <th className="tabTituloCurso">Data de Compra</th>
+              <th className="tabTituloCodProd">Código do Produto</th>
+              <th className="tabTituloNomeProd">Nome do Produto</th>
+              <th className="">Data de Compra</th>
               <th></th>
               <th></th>
             </tr>
@@ -159,6 +163,7 @@ export default class CrudProduto extends Component {
   render() {
     return (
       <Main title={title}>
+        {<Menu></Menu>}
         {this.renderForm()}
         {this.renderTable()}
       </Main>
