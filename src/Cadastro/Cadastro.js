@@ -6,34 +6,35 @@ import cabecalho from "../assets/group13.svg";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import  AuthService  from '../services/AuthService'
-const Cadastro = () => {
+import AuthService from "../services/AuthService";
 
+
+
+const Cadastro = () => {
   const navigate = useNavigate();
 
   const [msg, setMsg] = useState("");
 
   const registrar = () => {
-    const userName = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
+    const userName = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
     const role = "Cliente";
-    
 
-
-    const json ={
+    const json = {
       id: 0,
       userName: userName,
       email: email,
       senha: senha,
-      role: role
-    }
+      role: role,
+    };
 
-    axios.post("http://localhost:5092/api/Cliente", json).then(event => {setMsg("Conta criada com Sucesso!"); navigate("/home"); 
-                                                               AuthService.login(email, senha);});
-    
-    
-  }
+    axios.post("http://localhost:5092/api/Cliente", json).then((event) => {
+      setMsg("Conta criada com Sucesso!");
+      navigate("/home");
+      AuthService.login(email, senha);
+    });
+  };
 
   return (
     <div>
@@ -102,22 +103,19 @@ const Cadastro = () => {
             </div>
 
             <div>{msg}</div>
-
-            
           </form>
           <img className="rectangle-4" src={rectangle4} />
           <div className="buttons">
-              <button className="buttonCadastro" onClick={event => registrar()}>
-                <p className="textButton">Cadastrar!</p>
+            <button className="buttonCadastro" onClick={(event) => registrar()}>
+              <p className="textButton">Cadastrar!</p>
+            </button>
+
+            <a href="/login">
+              <button className="buttonLogin" type="button">
+                <p className="textButton">Já tenho Conta</p>
               </button>
-
-              <a href="/login">
-                <button className="buttonLogin" type="button">
-                  <p className="textButton">Já tenho Conta</p>
-                </button>
-              </a>
-            </div>
-
+            </a>
+          </div>
         </div>
       </div>
     </div>

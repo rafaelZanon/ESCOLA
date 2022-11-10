@@ -9,11 +9,10 @@ const title = "Consulta e Cadastro de Produto";
 
 const urlAPI = "http://localhost:5092/api/Produto";
 
-
-
 export default function CrudProduto() {
  
   const [lista, setLista] = useState ([])
+  
   const [Produto, setProduto] = useState([{
     id: 0,
     codProd: 0,
@@ -73,11 +72,8 @@ const [Atualizar, setAtualizar] = useState(false)
   }
 
   const atualizaCampo = (event) => {
-    //clonar usuário a partir do state, para não alterar o state diretamente
     const Produtos = Produto
-    //usar o atributo NAME do input para identificar o campo a ser atualizado
     Produtos[event.target.nomeProd] = event.target.value;
-    //atualizar o state
     setProduto(Produtos)
   }
 
@@ -91,9 +87,7 @@ const [Atualizar, setAtualizar] = useState(false)
           placeholder="Código do Produto"
           className="form-input"
           name="codProd"
-          //alterar depois que tem CSS
           value={Produto.codProd}
-          
         />
         <label> Nome do Produto: </label>
         <input
@@ -102,11 +96,8 @@ const [Atualizar, setAtualizar] = useState(false)
           placeholder="Nome do Produto"
           className="form-input"
           name="nomeProd"
-          //alterar depois que tem CSS
-          value={Produto.nomeProd}
-          
+          value={Produto.nomeProd}         
         />
-
         <label> Data do Pedido: </label>
         <input
           type="text"
@@ -114,9 +105,7 @@ const [Atualizar, setAtualizar] = useState(false)
           className="form-input"
           name="dataProd"
           placeholder="Data do Pedido"
-          //alterar depois que tem CSS
           value={Produto.dataProd}
-          
         />
         <button className="btnSalvar" onClick={(e) => salvar(e)}>
           Salvar
@@ -141,14 +130,11 @@ const [Atualizar, setAtualizar] = useState(false)
   const remover = (Produto) => {
     const url = urlAPI + "/" + Produto.id;
     if (window.confirm("Confirma remoção de Produto: " + Produto.id)) {
-      
       axios["delete"](url, Produto).then((resp) => {
-      
       });
     }
   }
 
-  //mudar coisas que tem CSS
   const renderTable = () => {
     return (
       <div className="listagem">

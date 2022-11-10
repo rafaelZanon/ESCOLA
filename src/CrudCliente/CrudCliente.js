@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import "./CrudCliente.css";
 import Main from "../components/templates/Main";
 import axios from "axios";
@@ -7,78 +7,76 @@ import Menu from "../components/templates/Menu";
 const title = "Cadastro de Cliente";
 
 const urlAPI = "http://localhost:5092/api/Cliente";
-const initialState = {
-  Cliente: { id: 0, userName: "", role: "", email: "" },
-  lista: [],
 
-  atualizar: false,
-};
+export default function CrudCliente(){
+  
+  const [lista, setLista] = useState ([])
 
-export default class CrudCliente extends Component {
-  state = { ...initialState };
+  const [Cliente, setCliente] = useState ([{
+    id: 0,
+    userName: "",
+    role: "",
+    email: ""
+  }])
 
-  componentDidMount() {
+  const [Atualizar, setAtualizar] = useState(false)
+
+  useEffect(() => {
     axios(urlAPI).then((resp) => {
-      this.setState({ lista: resp.data });
+      setCliente(resp.data);
+      setLista(resp.data);
     });
+  }, [lista])
+
+
+  const limpar = () => {
+    setLista([]);
   }
 
-  atualizar(id) {
-    const Cliente = this.state.Cliente;
-    Cliente.id = id;
-    Cliente.email = document.getElementById("email").value;
-    const metodo = "put";
-    console.log(Cliente);
-    axios[metodo](`${urlAPI}/${id}`, Cliente).then((resp) => {
-      const lista = this.getListaAtualizada(resp.data);
-
-      this.setState({ Cliente: initialState.Cliente, lista, atualizar: false });
-    });
-  }
-
-  limpar() {
-    this.setState({ Cliente: initialState.Cliente });
-  }
-  salvar() {
-    const Cliente = this.state.Cliente;
+  const salvar = () => {
     const UserName = document.getElementById("usuario").value;
     const role = document.getElementById("role").value;
     const Email = document.getElementById("email").value;
-    if (!this.state.atualizar) {
-      const metodo = "post";
-      const Json = {
+    const json = {
         id: 0,
         userName: UserName,
         role: role,
         email: Email,
-      };
-
-      axios[metodo](urlAPI, Json).then((resp) => {
-        const lista = this.getListaAtualizada(resp.data);
-        console.log(lista);
-        this.setState({ Cliente: initialState.Cliente, lista });
-      });
-    } else this.atualizar(Cliente.id);
+      }
+    const metodo = "post";
+    axios[metodo](urlAPI, json).then((resp) => {
+      setCliente(Cliente)
+    });
   }
 
-  getListaAtualizada(Cliente) {
-    const lista = this.state.lista.filter((a) => a.id !== Cliente.id);
-    axios(urlAPI).then((resp) => {
-      this.setState({ lista: resp.data });
+  const atualizar = () => {
+    const Cliente = Cliente;
+    const metodo = "put";
+    axios[metodo](urlAPI + "/" + Cliente.id, Cliente).then((resp) => {
+      const lista = this.getListaAtualizada(resp.data);
+      setCliente(resp.data)
+      setLista(lista)
     });
+    setAtualizar(false);
+  }
+
+  const getListaAtualizada = (Cliente) => {
+    const lista = lista.filter((a) => a.id !== Cliente.id);
     lista.unshift(Cliente);
+    axios(urlAPI).then((resp) => {
+      setLista(resp.data)
+    });
     return lista;
   }
-  atualizaCampo(event) {
-    const Cliente = { ...this.state.Cliente };
 
-    Cliente[event.target.name] = event.target.value;
-
-    this.setState({ Cliente });
+  const atualizaCampo = (event) => {
+    const Clientes = Cliente
+    Clientes[event.target.userName] = event.target.value;
+    setCliente(Clientes)
   }
-  renderForm() {
+
+  const renderForm = () => {
     return (
-      
       <div className="inserir-container">
         <label> Usuário </label>
         <input
@@ -87,8 +85,7 @@ export default class CrudCliente extends Component {
           placeholder="Usuário do Cliente"
           className="form-input"
           name="usuario"
-          defaultValue={this.state.Cliente.userName}
-          onChange={(e) => this.atualizaCampo(e)}
+          defaultValue={Cliente.userName}
         />
         <label> Prioridade: </label>
         <input
@@ -97,8 +94,7 @@ export default class CrudCliente extends Component {
           placeholder="Cliente ou Adm?"
           className="form-input"
           name="role"
-          defaultValue={this.state.Cliente.role}
-          onChange={(e) => this.atualizaCampo(e)}
+          defaultValue={Cliente.role}
         />
         <label> Email: </label>
         <input
@@ -107,35 +103,36 @@ export default class CrudCliente extends Component {
           placeholder="Email do Cliente"
           className="form-input"
           name="email"
-          defaultValue={this.state.Cliente.email}
-          onChange={(e) => this.atualizaCampo(e)}
+          defaultValue={Cliente.email}
         />
         <Opcoes />
 
-        <button className="btnSalvar" onClick={(e) => this.salvar(e)}>
+        <button className="btnSalvar" onClick={(e) => salvar(e)}>
           Salvar
         </button>
-        <button className="btnCancelar" onClick={(e) => this.limpar(e)}>
+        <button className="btnCancelar" onClick={(e) => limpar(e)}>
           Cancelar
         </button>
       </div>
     );
   }
 
-  carregar(Cliente) {
-    this.setState({ Cliente: Cliente, atualizar: true });
+  const carregar = (Cliente) => {
+    setAtualizar(true)
+    setCliente(Cliente)
   }
-  remover(Cliente) {
+
+  const remover = (Cliente) => {
     const url = urlAPI + "/" + Cliente.id;
     if (window.confirm("Confirma remoção do Cliente: " + Cliente.userName)) {
       axios["delete"](url, Cliente).then((resp) => {
-        const lista = this.getListaAtualizada(Cliente, false);
-        this.setState({ Cliente: initialState.Cliente, lista });
+        const lista = getListaAtualizada(Cliente, false);
+        setLista(lista)
       });
     }
   }
 
-  renderTable() {
+  const renderTable = () => {
     return (
       <div className="listagem">
         <table className="listaClientes" id="tblListaClientes">
@@ -155,10 +152,10 @@ export default class CrudCliente extends Component {
                 <td>{Cliente.role}</td>
                 <td>{Cliente.email}</td>
                 <td>
-                  <button onClick={() => this.carregar(Cliente)}>Altera</button>
+                  <button onClick={() => carregar(Cliente)}>Altera</button>
                 </td>
                 <td>
-                  <button onClick={() => this.remover(Cliente)}>Remove</button>
+                  <button onClick={() => remover(Cliente)}>Remove</button>
                 </td>
               </tr>
             ))}
@@ -167,13 +164,13 @@ export default class CrudCliente extends Component {
       </div>
     );
   }
-  render() {
-    return (
+    
+  return (
       <Main title={title}>
-        {<Menu></Menu>}
-        {this.renderForm()}
-        {this.renderTable()}
+        <Menu></Menu>
+        {renderForm()}
+        {renderTable()}
       </Main>
     );
-  }
+  
 }
