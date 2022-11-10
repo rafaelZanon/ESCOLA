@@ -1,66 +1,87 @@
-import React, { Component } from "react";
+import React, {useState,useEffect } from "react";
 import Menu from "../components/templates/Menu";
 import Main from "../components/templates/Main";
 import axios from "axios";
+
 const title = "Consulta e Cadastro de Produto";
 
 //ALTERAR TUDO QUE TEM CSS
 
 const urlAPI = "http://localhost:5092/api/Produto";
-const initialState = {
-  Produto: { id: 0, codProd: 0, nomeProd: "", dataProd: "" },
-  lista: [],
-  atualizar: false,
-};
 
-export default class CrudProduto extends Component {
-  state = { ...initialState };
-  componentDidMount() {
+
+
+export default function CrudProduto() {
+ 
+  const [lista, setLista] = useState ([])
+  const [Produto, setProduto] = useState([{
+    id: 0,
+    codProd: 0,
+    nomeProd: "",
+    dataProd: ""
+  }])
+
+const [Atualizar, setAtualizar] = useState(false)
+
+  useEffect(() =>{
     axios(urlAPI).then((resp) => {
-      console.log(resp.data);
+           setProduto(resp.data);
+           setLista(resp.data);
+      });
+  },[lista]) 
 
-      this.setState({ lista: resp.data });
-    });
-  }
-
-  limpar() {
-    this.setState({ Produto: initialState.Produto });
-  }
-  salvar() {
-    const Produto = this.state.Produto;
-    Produto.codProd = Number(Produto.codProd);
+   const limpar = () => {
+     setLista([]);
+   };
+  
+    const salvar = () => {
+    const codProd = document.getElementById("codProd").value;
+    const nomeProd = document.getElementById("nomeProd").value;
+    const dataProd = document.getElementById("dataProd").value;
+    const json = {
+      id: 0,
+      codProd: codProd,
+      nomeProd: nomeProd,
+      dataProd: dataProd,
+    }
     const metodo = "post";
-    axios[metodo](urlAPI, Produto).then((resp) => {
-      const lista = this.getListaAtualizada(resp.data);
-      this.setState({ Produto: initialState.Produto, lista });
+    axios[metodo](urlAPI, json).then((resp) => {
+    setProduto(Produto)
+      
     });
   }
-  atualizar() {
-    const Produto = this.state.Produto;
+
+  const atualizar = () => {
+    const Produto = Produto;
     const metodo = "put";
     axios[metodo](urlAPI + "/" + Produto.id, Produto).then((resp) => {
-      const lista = this.getListaAtualizada(resp.data);
-      this.setState({ Produto: initialState.Produto, lista });
+      const lista = getListaAtualizada(resp.data);
+      setProduto(resp.data);
+      setLista(lista);
     });
-    this.state.atualizar = false;
+    setAtualizar(false);
   }
-  getListaAtualizada(Produto) {
-    const lista = this.state.lista.filter((a) => a.id !== Produto.id);
-    lista.unshift(Produto);
-    axios(urlAPI).then((resp) => {
-      this.setState({ lista: resp.data });
+
+
+  const getListaAtualizada = (Produto)=> {
+      const lista = lista.filter((a) => a.id !== Produto.id);
+      lista.unshift(Produto);
+      axios(urlAPI).then((resp) => {
+        setLista(resp.data);
     });
     return lista;
   }
-  atualizaCampo(event) {
+
+  const atualizaCampo = (event) => {
     //clonar usuário a partir do state, para não alterar o state diretamente
-    const Produto = { ...this.state.Produto };
+    const Produtos = Produto
     //usar o atributo NAME do input para identificar o campo a ser atualizado
-    Produto[event.target.name] = event.target.value;
+    Produtos[event.target.nomeProd] = event.target.value;
     //atualizar o state
-    this.setState({ Produto });
+    setProduto(Produtos)
   }
-  renderForm() {
+
+  const renderForm = () => {
     return (
       <div className="inserir-container">
         <label> Código do Produto: </label>
@@ -71,8 +92,8 @@ export default class CrudProduto extends Component {
           className="form-input"
           name="codProd"
           //alterar depois que tem CSS
-          value={this.state.Produto.codProd}
-          onChange={(e) => this.atualizaCampo(e)}
+          value={Produto.codProd}
+          
         />
         <label> Nome do Produto: </label>
         <input
@@ -82,8 +103,8 @@ export default class CrudProduto extends Component {
           className="form-input"
           name="nomeProd"
           //alterar depois que tem CSS
-          value={this.state.Produto.nomeProd}
-          onChange={(e) => this.atualizaCampo(e)}
+          value={Produto.nomeProd}
+          
         />
 
         <label> Data do Pedido: </label>
@@ -94,41 +115,41 @@ export default class CrudProduto extends Component {
           name="dataProd"
           placeholder="Data do Pedido"
           //alterar depois que tem CSS
-          value={this.state.Produto.dataProd}
-          onChange={(e) => this.atualizaCampo(e)}
+          value={Produto.dataProd}
+          
         />
-        <button className="btnSalvar" onClick={(e) => this.salvar(e)}>
+        <button className="btnSalvar" onClick={(e) => salvar(e)}>
           Salvar
         </button>
-        {this.state.atualizar && (
-          <button className="btnSalvar" onClick={(e) => this.atualizar(e)}>
+        {atualizar && (
+          <button className="btnSalvar" onClick={(e) => atualizar(e)}>
             Atualizar
           </button>
         )}
-        <button className="btnCancelar" onClick={(e) => this.limpar(e)}>
+        <button className="btnCancelar" onClick={(e) => limpar(e)}>
           Cancelar
         </button>
       </div>
     );
   }
 
-  carregar(Produto) {
-    this.state.atualizar = true;
-    this.setState({ Produto });
+  const carregar = (Produto) => {
+    setAtualizar(true)
+    setProduto(Produto)
   }
-  remover(Produto) {
+
+  const remover = (Produto) => {
     const url = urlAPI + "/" + Produto.id;
     if (window.confirm("Confirma remoção de Produto: " + Produto.id)) {
-      console.log("entrou no confirm");
+      
       axios["delete"](url, Produto).then((resp) => {
-        const lista = this.getListaAtualizada(Produto);
-        console.log("entrou no THEN");
-        this.setState({ Produto: initialState.Produto, lista });
+      
       });
     }
   }
+
   //mudar coisas que tem CSS
-  renderTable() {
+  const renderTable = () => {
     return (
       <div className="listagem">
         <table className="listaProdutos" id="tblListaProdutos">
@@ -142,16 +163,16 @@ export default class CrudProduto extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.lista.map((Produto) => (
+            {lista.map((Produto) => (
               <tr key={Produto.id}>
                 <td>{Produto.codProd}</td>
                 <td>{Produto.nomeProd}</td>
                 <td>{Produto.dataProd}</td>
                 <td>
-                  <button onClick={() => this.carregar(Produto)}>Altera</button>
+                  <button onClick={() => carregar(Produto)}>Altera</button>
                 </td>
                 <td>
-                  <button onClick={() => this.remover(Produto)}>Remove</button>
+                  <button onClick={() => remover(Produto)}>Remove</button>
                 </td>
               </tr>
             ))}
@@ -160,13 +181,14 @@ export default class CrudProduto extends Component {
       </div>
     );
   }
-  render() {
+  
     return (
       <Main title={title}>
-        {<Menu></Menu>}
-        {this.renderForm()}
-        {this.renderTable()}
+        <Menu></Menu>
+        {renderForm()}
+        {renderTable()}
+        
       </Main>
     );
-  }
+  
 }
