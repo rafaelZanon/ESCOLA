@@ -146,7 +146,7 @@ export default function CrudCliente(){
             </tr>
           </thead>
           <tbody>
-            {this.state.lista.map((Cliente) => (
+            {lista.map((Cliente) => (
               <tr key={Cliente.id}>
                 <td>{Cliente.userName}</td>
                 <td>{Cliente.role}</td>

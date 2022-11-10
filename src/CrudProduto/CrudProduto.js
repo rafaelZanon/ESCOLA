@@ -5,8 +5,6 @@ import axios from "axios";
 
 const title = "Consulta e Cadastro de Produto";
 
-//ALTERAR TUDO QUE TEM CSS
-
 const urlAPI = "http://localhost:5092/api/Produto";
 
 export default function CrudProduto() {

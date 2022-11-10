@@ -5,7 +5,6 @@ const URLapiGatinho= "https://api.thecatapi.com/v1/images/search";
 const initialState = {
     imagem: { id: '', url: '', width: 0, height: 0 },
     lista: [],
-    // Novo estado para definir quando eu estou atualizando e vise versa
 }
 
 export default class PerfilImagem extends Component {

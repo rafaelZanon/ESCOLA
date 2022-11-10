@@ -1,29 +1,32 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Main from "../components/templates/Main";
 import axios from "axios";
 import { Card } from "react-bootstrap";
 import PerfilImagem from "../api/perfilImagens";
 import Menu from "../components/templates/Menu";
-//ALTERAR TUDO QUE TEM CURSO  e ALUNO
 
 const urlAPI = "http://localhost:5092/api/Cliente";
-const initialState = {
-  Cliente: { id: 0, userName: "", role: "", email: "" },
-  lista: [],
-  // Novo estado para definir quando eu estou atualizando e vise versa
-};
 
-export default class ListaClientes extends Component {
-  state = { ...initialState };
+export default function ListaClientes(){
+  
+  const [lista, setLista] = useState ([])
 
-  componentDidMount() {
+  const [Cliente, setCliente] = useState ([{
+    id: 0,
+    userName: "",
+    role: "",
+    email: ""
+  }])
+
+  useEffect(() => {
     axios(urlAPI).then((resp) => {
-      this.setState({ lista: resp.data });
+      setCliente(resp.data);
+      setLista(resp.data);
     });
-  }
+  }, [lista])
 
-  renderTable() {
+  const renderTable = () => {
     return (
       <div
         style={{
@@ -33,7 +36,7 @@ export default class ListaClientes extends Component {
           justifyContent: "space-between",
         }}
       >
-        {this.state.lista.map((cliente) => (
+        {lista.map((cliente) => (
           <Card
             key={cliente.id}
             style={{
@@ -64,12 +67,11 @@ export default class ListaClientes extends Component {
       </div>
     );
   }
-  render() {
     return (
       <Main>
         {<Menu></Menu>}
-        {this.renderTable()}
+        {renderTable()}
       </Main>
     );
-  }
+  
 }
