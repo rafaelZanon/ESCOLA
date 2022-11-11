@@ -1,31 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
+import "./style.css";
+import Main from '../components/templates/Main';
 
 const URLapiGatinho= "https://api.thecatapi.com/v1/images/search";
-const initialState = {
-    imagem: { id: '', url: '', width: 0, height: 0 },
-    lista: [],
-}
 
-export default class PerfilImagem extends Component {
-    state = { ...initialState }
 
-    componentDidMount() {
-        axios(URLapiGatinho).then(resp => {
-            this.setState({ lista: resp.data })
+export default function PerfilImagem() {
 
+    const [imagem, setImagem] = useState([{
+        id: '',
+        url: '',
+        width: 0,
+        height: 0
+    }])
+
+    const [lista, setLista] = useState([])
+
+    useEffect(() => {
+        axios(URLapiGatinho).then((resp) => {
+            setImagem(resp.data);
+            setLista(resp.data);
         })
-    }
+    }, [lista])
 
-    render() {
+
+    const render = () => {
         return (
            <div>
-               {this.state.lista.map(
+               {lista.map(
                    (e) =>
-                   <img style={{width: "150px", height: "75px"}} src={e.url}/>
+                   <img className='posicaoImg' src={e.url}/>
                )}
            </div>
-
         )
     }
+    return (
+        <Main>
+            {render()}
+        </Main>
+    )
 }

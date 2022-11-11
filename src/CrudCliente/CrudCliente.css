@@ -11,21 +11,22 @@
 }
 
 .cabecTabela {
-    color: white;
     background-color: #c44d58;
     font-size: 20px;
     text-align: left;
     border-radius: 5px;
+    box-shadow: 0px 0px 4px;
     text-align: center;
 }
 
 th, td {
     padding: 10px;
     width: 100%;
-    background-color: #c44d58;
-    color: white;
+    background-color: #d7d7d7;
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     text-align: center;
+    box-shadow: 0px 0px 2px;
 }
 
 .tabTituloUsuario {
@@ -36,34 +37,18 @@ th, td {
     width: 400px;
 }
 
-input[type=text] {
-    display: flexbox;
-    width: 100%;
-    border-radius: 100px;
-    padding: 12px;
-    margin: 8px 0;
-}
-
-
-
-input[type=number] {
-    padding: 12px;
-    width: 50%;
-}
-
-
 .inserir-container {
     margin: 20px;
     border-radius: 5px;
-    background-color: #556270;
+    background-color: #d7d7d7;
     padding: 20px;
     text-align: center;
+    box-shadow: 0px 0px 4px;
 }
 
 
-
 .btnSalvar {
-    background-color: #4ecdc4;
+    background-color: #9ffa92;
     color: black;
     padding: 12px 20px;
     border: none;
@@ -73,15 +58,18 @@ input[type=number] {
 }
 
 
-
 .btnCancelar {
-    background-color: #c44d58;
-    color: white;
+    background-color: #fe9ea8;
+    color: rgb(0, 0, 0);
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin: 5px;
+}
+
+.textLabel{
+    color: rgb(85, 85, 85);
 }
 
 

@@ -1,4 +1,5 @@
 import React, {useState,useEffect } from "react";
+import "./CrudProduto.css";
 import Menu from "../components/templates/Menu";
 import Main from "../components/templates/Main";
 import axios from "axios";
@@ -78,7 +79,7 @@ const [Atualizar, setAtualizar] = useState(false)
   const renderForm = () => {
     return (
       <div className="inserir-container">
-        <label> Código do Produto: </label>
+        <label> <p className="textLabel">Código do Produto:</p> </label>
         <input
           type="text"
           id="codProd"
@@ -87,7 +88,7 @@ const [Atualizar, setAtualizar] = useState(false)
           name="codProd"
           value={Produto.codProd}
         />
-        <label> Nome do Produto: </label>
+        <label> <p className="textLabel">Nome do Produto:</p> </label>
         <input
           type="text"
           id="nomeProd"
@@ -96,7 +97,7 @@ const [Atualizar, setAtualizar] = useState(false)
           name="nomeProd"
           value={Produto.nomeProd}         
         />
-        <label> Data do Pedido: </label>
+        <label> <p className="textLabel">Data do Pedido:</p> </label>
         <input
           type="text"
           id="dataProd"
@@ -108,11 +109,6 @@ const [Atualizar, setAtualizar] = useState(false)
         <button className="btnSalvar" onClick={(e) => salvar(e)}>
           Salvar
         </button>
-        {atualizar && (
-          <button className="btnSalvar" onClick={(e) => atualizar(e)}>
-            Atualizar
-          </button>
-        )}
         <button className="btnCancelar" onClick={(e) => limpar(e)}>
           Cancelar
         </button>

@@ -3,19 +3,21 @@ nav.menu {
     text-align: center;
     }
     .menu a{text-decoration: none;
-        color: rgb(32, 106, 255);
+        color: #424242;
         padding: 10px;
         font-size: 30px;
         padding: 5px;
         margin-top: 20px;
         text-align: center;
+        
         }
         .menu a:hover {
-        color: rgb(43, 255, 0);
+        color: #9A9A9A;
         }
         .txtAdmin{
             text-align: center;
             position: relative;
             font-size: 30px;
-            color: red;
+            color: #749CFF;
         }
+        

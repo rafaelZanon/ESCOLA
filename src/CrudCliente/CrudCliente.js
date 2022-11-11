@@ -78,7 +78,7 @@ export default function CrudCliente(){
   const renderForm = () => {
     return (
       <div className="inserir-container">
-        <label> Usuário </label>
+        <label> <p className="textLabel">Usuário:</p> </label>
         <input
           type="text"
           id="usuario"
@@ -87,7 +87,7 @@ export default function CrudCliente(){
           name="usuario"
           defaultValue={Cliente.userName}
         />
-        <label> Prioridade: </label>
+        <label> <p className="textLabel">Prioridade:</p> </label>
         <input
           type="text"
           id="role"
@@ -96,7 +96,7 @@ export default function CrudCliente(){
           name="role"
           defaultValue={Cliente.role}
         />
-        <label> Email: </label>
+        <label> <p className="textLabel">Email:</p> </label>
         <input
           type="email"
           id="email"
