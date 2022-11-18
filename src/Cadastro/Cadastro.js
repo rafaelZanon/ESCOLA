@@ -51,7 +51,6 @@ const Cadastro = () => {
 
           <form>
             <div className="campoEmail">
-              <label>Usuário</label>
               <input
                 className="inputEmail"
                 name="usuario"
@@ -61,7 +60,6 @@ const Cadastro = () => {
             </div>
 
             <div className="campoEmail">
-              <label>Email</label>
               <input
                 className="inputEmail"
                 type="email"
@@ -72,7 +70,6 @@ const Cadastro = () => {
             </div>
 
             <div className="campoEmail">
-              <label>Confirme seu email</label>
               <input
                 className="inputEmail"
                 type="email"
@@ -82,7 +79,6 @@ const Cadastro = () => {
             </div>
 
             <div className="campoSenha">
-              <label>Senha</label>
               <input
                 className="inputSenha"
                 type="password"
@@ -93,7 +89,6 @@ const Cadastro = () => {
             </div>
 
             <div className="campoSenha">
-              <label>Confirme sua senha</label>
               <input
                 className="inputSenha"
                 type="password"

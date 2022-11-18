@@ -1,12 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap");
+
 .tituloListagem {
     margin-left: 20px;
+    font-family: Poppins, sans-serif;
 }
 
 .listaClientes {
     margin-left: 20px;
-    font-family:
-        'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida
-     Sans', Arial, sans-serif;
+    font-family: Poppins, sans-serif;
 
 }
 
@@ -16,6 +18,7 @@
     text-align: left;
     border-radius: 5px;
     box-shadow: 0px 0px 4px;
+    font-family: Poppins, sans-serif;
     text-align: center;
 }
 
@@ -43,6 +46,7 @@ th, td {
     background-color: #d7d7d7;
     padding: 20px;
     text-align: center;
+    font-family: Poppins, sans-serif;
     box-shadow: 0px 0px 4px;
 }
 
@@ -55,6 +59,7 @@ th, td {
     border-radius: 4px;
     cursor: pointer;
     margin: 5px 5px 5px 30px;
+    font-family: Poppins, sans-serif;
 }
 
 
@@ -66,10 +71,12 @@ th, td {
     border-radius: 4px;
     cursor: pointer;
     margin: 5px;
+    font-family: Poppins, sans-serif;
 }
 
 .textLabel{
     color: rgb(85, 85, 85);
+    font-family: Poppins, sans-serif;
 }
 
 
@@ -79,4 +86,5 @@ label {
 
 .form-input{
     text-align: center;
+    font-family: Poppins, sans-serif;
 }

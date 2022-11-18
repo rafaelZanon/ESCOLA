@@ -14,21 +14,17 @@ export default function Menu(props) {
         <>
             {role == "Admin" ?  
             <nav className='menu'>
-            <text className='txtAdmin'>Menu do ADMIN : </text>
             <a href="/home">
-                Home |
+                Home 
             </a>
             <a href="/cliente">
-                Clientes |
+                Clientes 
             </a>
             <a href="/produto">
-                Produtos |
+                Produtos 
             </a>
             <a href="/listaCliente">
-                Informações |
-            </a>
-            <a href='/login' onClick={event => AuthService.logout()}>
-                Sair?
+                Informações 
             </a>
                 </nav> : null}
         </>

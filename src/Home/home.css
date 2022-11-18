@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap");
 
+
 p {
     margin: 0;
 }
@@ -131,7 +132,6 @@ p {
   
   .groupBoxTwo {
     padding: 31px 0px 0px 0px;
-    margin-right: 20px;
     box-sizing: border-box;
     border-radius: 32px;
     background-color: rgba(63, 71, 60, 1);
@@ -162,14 +162,18 @@ p {
     width: 100%;
   }
   
-  .GrupoCells{
-    padding: 31px 0px 0px 0px;
-    margin-right: 20px;
-    box-sizing: border-box;
+  .rectangle-29 {
+    height: 94%;
+    
+    background-color: #c8dd83;
     border-radius: 32px;
-    background-color: rgba(200, 221, 131, 1);
-    height: 100%;
+    
+    
+    
+    padding-top: 38px;
+   
   }
+
   
   txt-693 {
     font-size: 32px;
@@ -374,7 +378,8 @@ p {
   }
   
   .image-40 {
-    height: 675px;
+    border-radius: 32px;
+    height: 670px;
     width: 100%;
   }
   

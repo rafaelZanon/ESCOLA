@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import AuthService from "../services/AuthService";
 import "./Login.css";
+import LOGIN from "../assets/LOGIN.png"
 
 function Login() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function Login() {
   return (
     <div className="login container clip-contents">
       <img
-        src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/77769ok2z1u-520%3A156?alt=media&token=68b3c814-0492-4893-bf6d-f947baa369ee"
+        src={LOGIN}
         alt="Not Found"
         className="backgroundImage"
       />

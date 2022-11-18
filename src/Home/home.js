@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../services/AuthService";
 import "./home.css";
 import Menu from "../components/templates/Menu";
+import Image35 from "../assets/image35.png";
+import group17 from "../assets/group17.svg";
+import image37 from "../assets/image37.png";
+import image36 from "../assets/image36.png";
+import image40 from "../assets/image40.png";
+import group18 from "../assets/group18.svg";
 
 function Home() {
 
@@ -19,7 +25,7 @@ function Home() {
           </p>
           <p className="txtColecao">Coleção Google Pixel</p>
         </div>
-        <div className="GrupoCells flex-col-hcenter-vstart">
+        <div className=" flex-col-hcenter-vstart">
           <p className="txtMade flex-hcenter">Made by Google</p>
           <div className="groupBox flex-row-vstart-hstart">
             <div className="groupBoxTwo flex-col-hcenter">
@@ -28,16 +34,16 @@ function Home() {
                 O telefone totalmente profissional do Google.
               </p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f32m30qojyc-I513%3A61%3B506%3A64?alt=media&token=fa08d0a6-f716-4348-8c7e-611f1d60aeed"
+                src={Image35}
                 alt="Not Found"
                 className="image-35"
               />
             </div>
-            <div className="group-4 flex-col-hcenter">
+            <div className="rectangle-29 flex-col-hcenter">
               <p className="txt-693">Pixel 7</p>
               <p className="txt-232">Simplesmente poderoso. Super útil.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f32m30qojyc-I513%3A61%3B506%3A66?alt=media&token=88e51aca-1abd-418a-954e-98949d3b4a71"
+                src={image36}
                 alt="Not Found"
                 className="image-35"
               />
@@ -48,7 +54,7 @@ function Home() {
                 Inteligente, poderoso, útil. E menos do que você pensa.
               </p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f32m30qojyc-I513%3A61%3B506%3A68?alt=media&token=4a2ec537-d2e9-4168-a22a-84ac9aa07329"
+                src={image37}
                 alt="Not Found"
                 className="image-35"
               />
@@ -56,6 +62,7 @@ function Home() {
           </div>
           <div className="group-15 flex-col">
             <p className="txt-316">Google Pixel Watch </p>
+          
             <p className="txt-039">Combinação do premium e o ousado. </p>
           </div>
           <div className="group-25 flex-col">
@@ -66,7 +73,7 @@ function Home() {
                 className="group-16"
               />
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f32m30qojyc-514%3A173?alt=media&token=10918b06-da56-4969-9d96-0c9990be9afb"
+                src={group17}
                 alt="Not Found"
                 className="group-17"
               />
@@ -78,7 +85,7 @@ function Home() {
               <div className="group-767 flex-col">
                 <div className="group-488 flex-row">
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f32m30qojyc-514%3A178?alt=media&token=118c2eab-671b-4714-884d-a540267b6da0"
+                    src={group18}
                     alt="Not Found"
                     className="group-18"
                   />
@@ -92,7 +99,7 @@ function Home() {
                   </div>
                 </div>
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f32m30qojyc-514%3A194?alt=media&token=88603525-e8cd-4008-b4a3-44b6db0f6049"
+                  src={image40}
                   alt="Not Found"
                   className="image-40"
                 />
